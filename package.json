@@ -22,6 +22,8 @@
         "js-sha256": "^0.10.1",
         "pinia": "^2.1.7",
         "vue": "^3.2.36",
+        "vue-drag-drop": "^1.1.4",
+        "vue-draggable-next": "^2.2.1",
         "vue-loader": "^17.3.0"
     }
 }

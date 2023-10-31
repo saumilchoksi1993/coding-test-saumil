@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\StoreTaskRequest;
 use App\Http\Requests\UpdateTaskRequest;
+use Illuminate\Http\Request;
 use App\Models\Task;
 
 class TaskController extends Controller
@@ -66,9 +67,18 @@ class TaskController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(UpdateTaskRequest $request, Task $task)
+    public function update(Request $request, Task $task)
     {
-        //
+        $update = ['name' => $request->name, 'phase_id' => $request->phase_id, 'user_id' => $request->user_id];
+        if($request->phase_id == 6){
+            $update['completed_at'] = date('Y-m-d H:i:s');
+        }
+        //return Task::where('id', $request->id)->update($update);
+
+        if(Task::where('id', $request->id)->update($update)) {
+            return Task::with('user')->where('id', $request->id)->first();
+        }
+        return false;
     }
 
     /**
