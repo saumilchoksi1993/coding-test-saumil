@@ -23,9 +23,9 @@ class TaskSeeder extends Seeder
                 ['name' => 'Convince Yoda to give you a day off from Jedi training.'],
             )
             ->state(new Sequence(
-                fn (Sequence $sequence) => [ 
-                    'user_id' => User::whereName('Luke Skywalker')->first()->id, 
-                    'phase_id' => Phase::all()->random() 
+                fn (Sequence $sequence) => [
+                    'user_id' => User::whereName('Luke Skywalker')->first()->id,
+                    'phase_id' => Phase::where('id', '!=', 6)->get()->random()
                 ],
             ))
             ->create();
@@ -38,9 +38,9 @@ class TaskSeeder extends Seeder
                 ['name' => 'Try diplomacy with planets that still think Jar Jar is funny.'],
             )
             ->state(new Sequence(
-                fn (Sequence $sequence) => [ 
-                    'user_id' => User::whereName('Princess Leia Organa')->first()->id, 
-                    'phase_id' => Phase::all()->random() 
+                fn (Sequence $sequence) => [
+                    'user_id' => User::whereName('Princess Leia Organa')->first()->id,
+                    'phase_id' => Phase::where('id', '!=', 6)->get()->random()
                 ],
             ))
             ->create();
@@ -53,9 +53,9 @@ class TaskSeeder extends Seeder
                 ['name' => 'Remind Chewie to lower the ship\'s thermostat – It\'s not Hoth in here!'],
             )
             ->state(new Sequence(
-                fn (Sequence $sequence) => [ 
-                    'user_id' => User::whereName('Han Solo')->first()->id, 
-                    'phase_id' => Phase::all()->random() 
+                fn (Sequence $sequence) => [
+                    'user_id' => User::whereName('Han Solo')->first()->id,
+                    'phase_id' => Phase::where('id', '!=', 6)->get()->random()
                 ],
             ))
             ->create();
@@ -68,9 +68,9 @@ class TaskSeeder extends Seeder
                 ['name' => 'Attend Sith sensitivity training session to work on your anger management.'],
             )
             ->state(new Sequence(
-                fn (Sequence $sequence) => [ 
-                    'user_id' => User::whereName('Darth Vader')->first()->id, 
-                    'phase_id' => Phase::all()->random() 
+                fn (Sequence $sequence) => [
+                    'user_id' => User::whereName('Darth Vader')->first()->id,
+                    'phase_id' => Phase::where('id', '!=', 6)->get()->random()
                 ],
             ))
             ->create();
@@ -83,9 +83,9 @@ class TaskSeeder extends Seeder
                 ['name' => 'Book Wookiee vocal lessons – surprise opera performance for Han.'],
             )
             ->state(new Sequence(
-                fn (Sequence $sequence) => [ 
-                    'user_id' => User::whereName('Chewbacca')->first()->id, 
-                    'phase_id' => Phase::all()->random() 
+                fn (Sequence $sequence) => [
+                    'user_id' => User::whereName('Chewbacca')->first()->id,
+                    'phase_id' => Phase::where('id', '!=', 6)->get()->random()
                 ],
             ))
             ->create();

@@ -1,10 +1,11 @@
 <template>
-    <div class="w-full bg-white text-gray-900 shadow-md rounded-lg p-3 pb-8 mb-4 relative"
-        @mouseenter="kanban.hoveredName = task.name" 
+    <div class="w-full text-gray-900 shadow-md rounded-lg p-3 pb-8 mb-4 relative task-card"
+    :class="task.phase_id == 6 ? 'bg-green' : 'bg-white'"
+        @mouseenter="kanban.hoveredName = task.name"
         @mouseleave="kanban.unhoverTask()"
         @click="kanban.selectTask(task)">
         {{ task.name }}<br>
-        <div class="text-xs text-gray-500 absolute bottom-2 ">{{ task.user.name }}</div>
+        <div class="text-xs text-gray-500 absolute bottom-2 ">{{ task.user.name }} {{ task.phase_id == 6 ? '(' + task.completed_at +')' : '' }}</div>
         <img class="w-10 h-10 shadow-lg rounded-full absolute bottom-0 right-0 -mr-2 -mb-2 border-2 border-white"
             :src="getAvatar()" :alt="task.user.name" />
     </div>
@@ -31,3 +32,8 @@ const props = defineProps({
     }
 })
 </script>
+<style scoped>
+.bg-green {
+    background-color: aquamarine;
+}
+</style>
